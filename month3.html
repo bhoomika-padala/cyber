@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Month 3: Enumeration, Passwords & Practical Labs - Deep dive into enumeration techniques, password cracking, and hands-on security assessments.">
+    <title>Month 3: Enumeration & Labs | Cybersecurity Crash Course</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Persistent Navigation -->
+    <nav class="nav-container">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">🔒</div>
+                <span class="nav-logo-text">CyberCourse</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-menu-item"><a href="index.html">Home</a></li>
+                <li class="nav-menu-item"><a href="month1.html">Foundations</a></li>
+                <li class="nav-menu-item"><a href="month2.html">Labs & Scanning</a></li>
+                <li class="nav-menu-item"><a href="month3.html" class="active">Enumeration</a></li>
+                <li class="nav-menu-item"><a href="tools.html">Tool Hub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span class="current">Month 3: Enumeration & Labs</span>
+            </div>
+            <h1>Month 3: Enumeration, Passwords & Practical Labs</h1>
+            <p>Deep dive into enumeration techniques, password cracking methods, and hands-on practical security assessments.</p>
+        </div>
+
+        <!-- Sidebar Widget - Integration Cue -->
+        <aside class="sidebar-widget">
+            <a href="tools.html#netcat-cheatsheet" class="widget-btn">
+                <span>🐱</span>
+                Netcat Cheatsheet
+            </a>
+        </aside>
+
+        <div class="container">
+            <!-- Section 24: Enumeration -->
+            <section id="enumeration" class="tool-category">
+                <h2>Enumeration Deep Dive</h2>
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.1rem;">
+                        <strong>Enumeration</strong> is the process of extracting detailed information from services running on target systems. It goes beyond scanning to gather specific data like usernames, group names, machine names, and network resources.
+                    </p>
+                    <h4 style="color: var(--cyan); margin-bottom: 1rem;">Types of Enumeration Discussed:</h4>
+                    <div class="content-grid" style="margin: 0;">
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>📁 FTP Enumeration</h4>
+                            <p>Extracting information from FTP services including user accounts and directory structures.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>🔐 SSH Enumeration</h4>
+                            <p>Gathering information about SSH services, versions, and authentication methods.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>📡 Telnet Enumeration</h4>
+                            <p>Using Telnet for banner grabbing and service identification.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>🔒 SSL/TLS Enumeration</h4>
+                            <p>Analyzing SSL/TLS configurations and certificates for vulnerabilities.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>📊 SNMP Enumeration</h4>
+                            <p>Extracting network device information using SNMP protocol.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>🗄️ Database Enumeration</h4>
+                            <p>Interacting with databases to extract schema and data information.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 25: FTP -->
+            <section id="ftp-enumeration" class="tool-category">
+                <h2>FTP (File Transfer Protocol)</h2>
+                <div class="glass-card content-card">
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        <strong>FTP</strong> is a standard network protocol used for transferring files between client and server.
+                    </p>
+                    <h4 style="color: var(--cyan); margin-bottom: 0.5rem;">Ports:</h4>
+                    <ul style="color: var(--text-secondary);">
+                        <li><strong>Port 20</strong> - FTP Data (for file transfer data)</li>
+                        <li><strong>Port 21</strong> - FTP Control (for command and control)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 26: Telnet -->
+            <section id="telnet-enumeration" class="tool-category">
+                <h2>Telnet</h2>
+                <div class="glass-card content-card">
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        <strong>Telnet</strong> is an insecure remote login protocol that transmits data in plaintext, including passwords.
+                    </p>
+                    <h4 style="color: var(--cyan); margin-bottom: 0.5rem;">Port:</h4>
+                    <ul style="color: var(--text-secondary);">
+                        <li><strong>Port 23</strong> - Telnet</li>
+                    </ul>
+                    <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.9rem;">
+                        ⚠️ <strong>Warning:</strong> Telnet is insecure and should be replaced with SSH for secure communications.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section 27: SSH -->
+            <section id="ssh-enumeration" class="tool-category">
+                <h2>SSH (Secure Shell)</h2>
+                <div class="glass-card content-card">
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        <strong>SSH</strong> is a secure remote login protocol that encrypts all communications including passwords.
+                    </p>
+                    <h4 style="color: var(--cyan); margin-bottom: 0.5rem;">Port:</h4>
+                    <ul style="color: var(--text-secondary);">
+                        <li><strong>Port 22</strong> - SSH</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 28: SNMP Enumeration -->
+            <section id="snmp-enumeration" class="tool-category">
+                <h2>SNMP Enumeration</h2>
+                <div class="glass-card content-card">
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        <strong>SNMP (Simple Network Management Protocol)</strong> is used for network device information gathering and management.
+                    </p>
+                    <h4 style="color: var(--cyan); margin-bottom: 0.5rem;">Ports:</h4>
+                    <ul style="color: var(--text-secondary);">
+                        <li><strong>Port 161</strong> - SNMP (for queries and responses)</li>
+                        <li><strong>Port 162</strong> - SNMP Trap (for notifications and alerts)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 29: Database Enumeration -->
+            <section id="database-enumeration" class="tool-category">
+                <h2>Database Enumeration</h2>
+                <div class="glass-card content-card">
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        Database enumeration involves interacting with databases such as MySQL/MariaDB to extract information about database structure, tables, and data.
+                    </p>
+                    <h4 style="color: var(--cyan); margin-bottom: 0.5rem;">Port:</h4>
+                    <ul style="color: var(--text-secondary);">
+                        <li><strong>Port 3306</strong> - MySQL/MariaDB</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 30: Netcat -->
+            <section id="netcat" class="tool-category">
+                <h2>Netcat</h2>
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        <strong>Netcat</strong> (often called the "Swiss Army knife of networking") is a versatile tool used for reading from and writing to network connections.
+                    </p>
+                    <h4 style="color: var(--cyan); margin-bottom: 1rem;">Main Uses:</h4>
+                    <div class="content-grid" style="margin: 0;">
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>🚩 Banner Grabbing</h4>
+                            <p>Connecting to services to retrieve version information and banners.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>🤝 Manual Interaction</h4>
+                            <p>Interacting directly with services like HTTP, SMTP, etc.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>💻 Shell Interaction</h4>
+                            <p>Establishing reverse shells and bind shells for remote access.</p>
+                        </div>
+                    </div>
+
+                    <!-- Integration Callout -->
+                    <div class="integration-callout" style="margin-top: 1.5rem;">
+                        <div class="integration-callout-icon">🐱</div>
+                        <div class="integration-callout-content">
+                            <h4>Netcat Cheatsheet</h4>
+                            <p>View the complete Netcat reference with common commands and usage examples.</p>
+                            <a href="tools.html#netcat-cheatsheet">View Netcat Cheatsheet →</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 31: Password Cracking Basics -->
+            <section id="password-cracking" class="tool-category">
+                <h2>Password Cracking Basics</h2>
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Password cracking involves recovering passwords from stored or transmitted data. It's a critical skill for security assessments and penetration testing.
+                    </p>
+                    <h4 style="color: var(--cyan); margin-bottom: 0.5rem;">Main Concepts:</h4>
+                    <ul style="color: var(--text-secondary);">
+                        <li><strong>Weak passwords</strong> - Passwords that are easily guessable or commonly used</li>
+                        <li><strong>Password hashes</strong> - One-way encrypted representations of passwords</li>
+                        <li><strong>Offline cracking</strong> - Cracking hashes without interacting with the target system</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 32: Ophcrack -->
+            <section id="ophcrack" class="tool-category">
+                <h2>Ophcrack</h2>
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        <strong>Ophcrack</strong> is a Windows password cracking tool that uses rainbow tables for efficient password recovery.
+                    </p>
+                    <h4 style="color: var(--cyan); margin-bottom: 0.5rem;">Main Uses:</h4>
+                    <ul style="color: var(--text-secondary);">
+                        <li>Password recovery</li>
+                        <li>LM/NTLM cracking</li>
+                        <li>Password auditing</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 33: Rainbow Tables -->
+            <section id="rainbow-tables" class="tool-category">
+                <h2>Rainbow Tables</h2>
+                <div class="glass-card content-card">
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        <strong>Rainbow Tables</strong> are precomputed tables of password hashes used to speed up password cracking. Instead of computing hashes in real-time, attackers can look up hashes in these tables.
+                    </p>
+                    <h4 style="color: var(--electric-blue); margin-bottom: 0.5rem;">Why They Matter:</h4>
+                    <p style="color: var(--text-secondary);">
+                        Used to significantly speed up password cracking by eliminating the need to compute hashes for every password attempt.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section 34: LM & NTLM Hashes -->
+            <section id="hash-types" class="tool-category">
+                <h2>LM & NTLM Hashes</h2>
+                <div class="content-grid">
+                    <div class="glass-card content-card">
+                        <h3>🔓 LM Hash</h3>
+                        <p><strong>LAN Manager Hash</strong> - Older and weak Windows hash format. Easily cracked due to design flaws including splitting passwords into two 7-character halves and converting to uppercase.</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>🔒 NTLM Hash</h3>
+                        <p><strong>NT LAN Manager Hash</strong> - Newer Windows hash format. More secure than LM but still vulnerable to modern cracking techniques including rainbow tables and GPU-accelerated attacks.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 35: Weak Password Security -->
+            <section id="weak-passwords" class="tool-category">
+                <h2>Weak Password Security</h2>
+                <div class="glass-card" style="padding: 2rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Weak passwords are vulnerable to various attack methods:
+                    </p>
+                    <div class="content-grid" style="margin: 0;">
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>💪 Brute Force Attacks</h4>
+                            <p>Trying every possible combination of characters until the correct password is found.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>📖 Dictionary Attacks</h4>
+                            <p>Using a list of common words and phrases to guess passwords.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>🌈 Rainbow Table Attacks</h4>
+                            <p>Using precomputed hash tables to quickly reverse password hashes.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Course Conclusion -->
+            <section id="course-conclusion" class="tool-category">
+                <h2>Course Conclusion</h2>
+                <div class="glass-card" style="padding: 2rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem;">
+                        Congratulations on completing the Cybersecurity Crash Course! Here's a summary of the practical skills you've learned:
+                    </p>
+                    <div class="skills-checklist">
+                        <div class="skill-item">
+                            <div class="skill-check">✓</div>
+                            <span>VM networking</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-check">✓</div>
+                            <span>Host discovery</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-check">✓</div>
+                            <span>Scanning</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-check">✓</div>
+                            <span>Enumeration</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-check">✓</div>
+                            <span>Service interaction</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-check">✓</div>
+                            <span>SSL analysis</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-check">✓</div>
+                            <span>Database interaction</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-check">✓</div>
+                            <span>Vulnerability identification</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-check">✓</div>
+                            <span>Password auditing</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation between months -->
+            <div style="display: flex; gap: 1rem; margin-top: 3rem; flex-wrap: wrap;">
+                <div class="integration-callout" style="flex: 1; min-width: 300px;">
+                    <div class="integration-callout-icon">⬅️</div>
+                    <div class="integration-callout-content">
+                        <h4>Review Month 2</h4>
+                        <p>Go back to Virtual Labs, Linux & Scanning if you need to review the lab setup.</p>
+                        <a href="month2.html">← Month 2: Labs & Scanning</a>
+                    </div>
+                </div>
+                <div class="integration-callout" style="flex: 1; min-width: 300px;">
+                    <div class="integration-callout-icon">🏠</div>
+                    <div class="integration-callout-content">
+                        <h4>Return Home</h4>
+                        <p>Go back to the home page to explore other sections or start over.</p>
+                        <a href="index.html">Go to Home →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">🔒 CyberCourse</div>
+            <p>A comprehensive cybersecurity crash course for beginners.</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="month1.html">Month 1</a>
+                <a href="month2.html">Month 2</a>
+                <a href="month3.html">Month 3</a>
+                <a href="tools.html">Tool Hub</a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">© 2024 Cybersecurity Crash Course. Built for educational purposes.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        function toggleNav() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Close nav when clicking outside
+        document.addEventListener('click', function(e) {
+            const navMenu = document.getElementById('navMenu');
+            const navToggle = document.querySelector('.nav-toggle');
+            if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

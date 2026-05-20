@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Month 2: Virtual Labs, Linux & Scanning - Set up your cybersecurity lab, learn Kali Linux, and master network scanning with Nmap.">
+    <title>Month 2: Labs & Scanning | Cybersecurity Crash Course</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Persistent Navigation -->
+    <nav class="nav-container">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">🔒</div>
+                <span class="nav-logo-text">CyberCourse</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-menu-item"><a href="index.html">Home</a></li>
+                <li class="nav-menu-item"><a href="month1.html">Foundations</a></li>
+                <li class="nav-menu-item"><a href="month2.html" class="active">Labs & Scanning</a></li>
+                <li class="nav-menu-item"><a href="month3.html">Enumeration</a></li>
+                <li class="nav-menu-item"><a href="tools.html">Tool Hub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span class="current">Month 2: Labs & Scanning</span>
+            </div>
+            <h1>Month 2: Virtual Labs, Linux & Scanning</h1>
+            <p>Set up your cybersecurity lab environment, learn Linux essentials, and master network scanning tools like Nmap.</p>
+        </div>
+
+        <!-- Sidebar Widgets - Integration Cues -->
+        <aside class="sidebar-widget">
+            <a href="tools.html#linux-commands" class="widget-btn">
+                <span>🐧</span>
+                Linux Commands
+            </a>
+        </aside>
+
+        <div class="container">
+            <!-- Section 19: Virtual Lab Setup -->
+            <section id="virtual-lab-setup" class="tool-category">
+                <h2>Virtual Lab Setup</h2>
+                
+                <!-- Visual Infrastructure: Packet Pathway Diagram -->
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 2rem; background: rgba(0, 240, 255, 0.03);">
+                    <h4 style="color: var(--cyan); margin-bottom: 1rem;">🔗 Lab Network Packet Flow</h4>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; padding: 1.5rem; flex-wrap: wrap;">
+                        <div style="width: 140px; height: 70px; background: rgba(0, 114, 255, 0.2); border: 2px solid var(--cyan); border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                            <span style="font-weight: bold; color: var(--cyan);">Host Machine</span>
+                            <span style="font-size: 0.75rem; color: var(--text-muted);">Physical PC</span>
+                        </div>
+                        <div style="width: 30px; height: 2px; background: var(--cyan);"></div>
+                        <div style="width: 120px; height: 60px; background: rgba(0, 240, 255, 0.15); border: 2px solid var(--electric-blue); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--electric-blue); font-size: 0.85rem;">
+                            VirtualBox
+                        </div>
+                        <div style="width: 30px; height: 2px; background: var(--cyan);"></div>
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            <div style="width: 130px; height: 50px; background: rgba(78, 205, 196, 0.2); border: 1px solid #4ecdc4; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #4ecdc4;">
+                                Kali VM (Attacker)
+                            </div>
+                            <div style="width: 2px; height: 15px; background: var(--cyan);"></div>
+                            <div style="width: 130px; height: 50px; background: rgba(255, 107, 107, 0.2); border: 1px solid #ff6b6b; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ff6b6b;">
+                                Metasploitable (Target)
+                            </div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem; text-align: center;">NAT Network allows inter-VM communication while isolated from host network</p>
+                </div>
+
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="color: var(--cyan); margin-bottom: 1rem;">🖥️ VirtualBox Installation</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        <strong>VirtualBox</strong> is virtualization software used to create and run virtual machines.
+                    </p>
+                    <h4 style="color: var(--electric-blue); margin-bottom: 0.5rem;">Why It Matters:</h4>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Used to create cybersecurity labs safely without affecting your main system.
+                    </p>
+                    <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Installation Steps:</h4>
+                    <ol style="color: var(--text-secondary); padding-left: 1.5rem; line-height: 2.2;">
+                        <li>Download the platform binary from virtualbox.org</li>
+                        <li>Run the executable with Administrator privileges</li>
+                        <li>Enable Virtualization Support (VT-x/AMD-V) in your hardware BIOS</li>
+                        <li>Complete installation setup</li>
+                    </ol>
+                </div>
+
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="color: var(--cyan); margin-bottom: 1rem;">🐱 Kali Linux Installation</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        <strong>Kali Linux</strong> is a penetration testing Linux distribution.
+                    </p>
+                    <h4 style="color: var(--electric-blue); margin-bottom: 0.5rem;">Why It Matters:</h4>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Used for cybersecurity testing and ethical hacking. Comes pre-installed with hundreds of security tools.
+                    </p>
+                    <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Installation Steps:</h4>
+                    <ol style="color: var(--text-secondary); padding-left: 1.5rem; line-height: 2.2;">
+                        <li>Download the pre-built 64-bit VirtualBox (.vbox) image</li>
+                        <li>Open VirtualBox → File → Import Appliance</li>
+                        <li>Allocate a minimum of 2048MB RAM and 2 Processor Cores</li>
+                        <li>Select "Copy machine ID"</li>
+                        <li>Click Import</li>
+                    </ol>
+                </div>
+
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="color: var(--cyan); margin-bottom: 1rem;">🎯 Metasploitable Installation</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        <strong>Metasploitable</strong> is an intentionally vulnerable virtual machine.
+                    </p>
+                    <h4 style="color: var(--electric-blue); margin-bottom: 0.5rem;">Why It Matters:</h4>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Used for safe cybersecurity practice. It contains known vulnerabilities that you can practice exploiting in a controlled environment.
+                    </p>
+                    <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Installation Steps:</h4>
+                    <ol style="color: var(--text-secondary); padding-left: 1.5rem; line-height: 2.2;">
+                        <li>Extract the downloaded zip file</li>
+                        <li>Open VirtualBox → Click "New"</li>
+                        <li>Name it 'Metasploitable' → Select Linux/Ubuntu 64-bit</li>
+                        <li>Choose "Use an existing virtual hard disk file"</li>
+                        <li>Browse and select the extracted .vmdk file</li>
+                        <li>Click Create</li>
+                    </ol>
+                </div>
+
+                <!-- Integration Callout -->
+                <div class="integration-callout">
+                    <div class="integration-callout-icon">📋</div>
+                    <div class="integration-callout-content">
+                        <h4>Need Linux Command Reference?</h4>
+                        <p>Check out the complete Linux command cheat sheet for navigation and network commands.</p>
+                        <a href="tools.html#linux-commands">View Linux Commands →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Networking Modes -->
+            <section id="networking-modes" class="tool-category">
+                <h2>Networking Modes</h2>
+                
+                <!-- Lab Networking Configuration Directory -->
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem; background: rgba(0, 114, 255, 0.05); border: 1px solid rgba(0, 240, 255, 0.2);">
+                    <h4 style="color: var(--cyan); margin-bottom: 1rem;">🔧 Lab Networking Configuration Directory</h4>
+                    <div class="code-block" style="margin-bottom: 1rem;">
+<span class="comment"># Step 1: In VirtualBox, go to Settings → Network → Adapter 1</span>
+<span class="comment"># Step 2: Change "Attached to" from default NAT to "NAT Network"</span>
+<span class="comment"># (This builds an isolated internal LAN sub-network allowing the Kali</span>
+<span class="comment"># instance to actively run discovery sweeps against the target Metasploitable interface)</span>
+<span class="comment"># Step 3: Run 'ip a' or 'ifconfig' in both terminals to verify both machines</span>
+<span class="comment"># sit on the same subnet (e.g., 10.0.2.X)</span>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="glass-card content-card">
+                        <h3>🌐 NAT</h3>
+                        <p>VM accesses internet through the host machine. The VM is hidden behind the host's IP address.</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>🔗 NAT Network</h3>
+                        <p>Allows VM communication inside a NAT environment. Multiple VMs can communicate with each other while sharing the host's IP.</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>🌍 Bridged Adapter</h3>
+                        <p>VM appears as a real device on the network with its own IP address. It can communicate directly with other devices on the network.</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>🔒 Internal Network</h3>
+                        <p>Only internal VM communication is allowed. VMs can talk to each other but have no access to the external network or internet.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 20: Kali Linux Basics -->
+            <section id="kali-linux-basics" class="tool-category">
+                <h2>Kali Linux Basics</h2>
+                
+                <div class="content-grid">
+                    <div class="glass-card content-card">
+                        <h3>👑 Root User</h3>
+                        <p>The administrator account with the highest privileges in Linux systems.</p>
+                        <div class="code-block">
+                            <span class="command">sudo su</span>  <span class="comment"># Switch to root user</span>
+                        </div>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>💻 Terminal Usage</h3>
+                        <p>Command-line interaction with Linux. The terminal is your primary interface for executing commands and scripts.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card" style="padding: 2rem; margin-top: 1.5rem;">
+                    <h3 style="color: var(--cyan); margin-bottom: 1rem;">Linux File Navigation</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Managing directories and files through command-line interface is essential for cybersecurity work.
+                    </p>
+
+                    <!-- Integration Callout -->
+                    <div class="integration-callout">
+                        <div class="integration-callout-icon">🐧</div>
+                        <div class="integration-callout-content">
+                            <h4>Linux Command Reference</h4>
+                            <p>View the complete cheat sheet for navigation and network commands including pwd, ip a, sudo su, and more.</p>
+                            <a href="tools.html#linux-commands">View Complete Reference →</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 21: Host Discovery & Scanning -->
+            <section id="host-discovery" class="tool-category">
+                <h2>Host Discovery & Scanning</h2>
+                <div class="content-grid">
+                    <div class="glass-card content-card">
+                        <h3>📡 Netdiscover</h3>
+                        <p>Discovers live hosts using ARP (Address Resolution Protocol). Useful for identifying devices on your local network.</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>⚡ Angry IP Scanner</h3>
+                        <p>Fast network scanning tool that can scan IP addresses and ports. Cross-platform and lightweight.</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>🔍 Advanced IP Scanner</h3>
+                        <p>Windows-based network scanner. Provides quick network analysis and remote control capabilities.</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>📶 Ping Sweep</h3>
+                        <p>Technique for identifying live hosts by sending ICMP echo requests to multiple addresses.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 22: Nmap -->
+            <section id="nmap" class="tool-category">
+                <h2>Nmap</h2>
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        <strong>Nmap</strong> (Network Mapper) is a powerful network scanning and enumeration tool used by security professionals worldwide.
+                    </p>
+                    <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Main Uses:</h4>
+                    <ul style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        <li>Host discovery</li>
+                        <li>Port scanning</li>
+                        <li>Service detection</li>
+                        <li>OS detection</li>
+                        <li>Enumeration</li>
+                    </ul>
+
+                    <h4 style="color: var(--cyan); margin-bottom: 1rem;">Important Nmap Commands:</h4>
+                    <div class="code-block">
+nmap <target>              <span class="comment"># Basic scan</span>
+nmap -F <target>            <span class="comment"># Fast scan (top 100 ports)</span>
+nmap -p- <target>           <span class="command"># Scan all 65535 ports</span>
+nmap -sS <target>           <span class="command"># Stealth SYN scan</span>
+nmap -sU <target>           <span class="command"># UDP scan</span>
+nmap -O <target>            <span class="command"># OS detection</span>
+nmap -sV <target>           <span class="command"># Service version detection</span>
+nmap -A <target>            <span class="command"># Aggressive scan (OS, version, script, traceroute)</span>
+nmap -sC <target>           <span class="command"># Default script scan</span>
+                    </div>
+                </div>
+
+                <!-- Integration Callout -->
+                <div class="integration-callout">
+                    <div class="integration-callout-icon">📋</div>
+                    <div class="integration-callout-content">
+                        <h4>Nmap Command Reference</h4>
+                        <p>View the complete Nmap command reference with all scanning flags for rapid lookups.</p>
+                        <a href="tools.html#nmap-commands">View Nmap Commands →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 23: Zenmap -->
+            <section id="zenmap" class="tool-category">
+                <h2>Zenmap</h2>
+                <div class="glass-card" style="padding: 2rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        <strong>Zenmap</strong> is the official graphical user interface (GUI) version of Nmap.
+                    </p>
+                    <h4 style="color: var(--cyan); margin-bottom: 0.5rem;">Features:</h4>
+                    <ul style="color: var(--text-secondary);">
+                        <li><strong>Topology Visualization</strong> - Visual representation of network layout and device connections</li>
+                        <li><strong>Scan Profiles</strong> - Pre-configured scanning templates for different scenarios</li>
+                        <li><strong>Result Visualization</strong> - Interactive display of scan results with filtering and sorting</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Navigation between months -->
+            <div style="display: flex; gap: 1rem; margin-top: 3rem; flex-wrap: wrap;">
+                <div class="integration-callout" style="flex: 1; min-width: 300px;">
+                    <div class="integration-callout-icon">⬅️</div>
+                    <div class="integration-callout-content">
+                        <h4>Review Month 1</h4>
+                        <p>Go back to Cybersecurity Foundations & Networking if you need to review the basics.</p>
+                        <a href="month1.html">← Month 1: Foundations</a>
+                    </div>
+                </div>
+                <div class="integration-callout" style="flex: 1; min-width: 300px;">
+                    <div class="integration-callout-icon">➡️</div>
+                    <div class="integration-callout-content">
+                        <h4>Continue to Month 3</h4>
+                        <p>Next: Enumeration, Passwords & Practical Labs - deep dive into advanced techniques.</p>
+                        <a href="month3.html">Month 3: Enumeration →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">🔒 CyberCourse</div>
+            <p>A comprehensive cybersecurity crash course for beginners.</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="month1.html">Month 1</a>
+                <a href="month2.html">Month 2</a>
+                <a href="month3.html">Month 3</a>
+                <a href="tools.html">Tool Hub</a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">© 2024 Cybersecurity Crash Course. Built for educational purposes.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        function toggleNav() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Close nav when clicking outside
+        document.addEventListener('click', function(e) {
+            const navMenu = document.getElementById('navMenu');
+            const navToggle = document.querySelector('.nav-toggle');
+            if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

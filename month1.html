@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Month 1: Cybersecurity Foundations & Networking - Learn cybersecurity basics, hacker types, malware, networking fundamentals, and IP addressing.">
+    <title>Month 1: Foundations & Networking | Cybersecurity Crash Course</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Persistent Navigation -->
+    <nav class="nav-container">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">🔒</div>
+                <span class="nav-logo-text">CyberCourse</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-menu-item"><a href="index.html">Home</a></li>
+                <li class="nav-menu-item"><a href="month1.html" class="active">Foundations</a></li>
+                <li class="nav-menu-item"><a href="month2.html">Labs & Scanning</a></li>
+                <li class="nav-menu-item"><a href="month3.html">Enumeration</a></li>
+                <li class="nav-menu-item"><a href="tools.html">Tool Hub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span class="current">Month 1: Foundations & Networking</span>
+            </div>
+            <h1>Month 1: Cybersecurity Foundations & Networking</h1>
+            <p>Build a strong foundation in cybersecurity concepts, understand different types of hackers, and master networking fundamentals.</p>
+        </div>
+
+        <!-- Sidebar Widget - Integration Cue -->
+        <aside class="sidebar-widget">
+            <a href="tools.html#ports-table" class="widget-btn">
+                <span>📋</span>
+                View Port Cheat Sheet
+            </a>
+        </aside>
+
+        <div class="container">
+            <!-- Section 1: Cybersecurity Basics -->
+            <section id="cybersecurity-basics" class="tool-category">
+                <h2>Cybersecurity Basics</h2>
+                <div class="content-grid">
+                    <div class="glass-card content-card">
+                        <h3>🔐 What is Cybersecurity?</h3>
+                        <p>Cybersecurity is the practice of protecting systems, networks, servers, applications, and data from cyberattacks, unauthorized access, malware, and digital threats.</p>
+                        <h4>Cybersecurity focuses on:</h4>
+                        <ul>
+                            <li><strong>Confidentiality</strong> - Ensuring only authorized access</li>
+                            <li><strong>Integrity</strong> - Maintaining data accuracy</li>
+                            <li><strong>Availability</strong> - Ensuring systems are accessible</li>
+                        </ul>
+                        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">These three together are often called the <strong style="color: var(--cyan);">CIA Triad</strong>.</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>⚠️ Why Cybersecurity is Important</h3>
+                        <p>Modern organizations, governments, and individuals rely heavily on digital systems.</p>
+                        <h4>Without cybersecurity:</h4>
+                        <ul>
+                            <li>Data can be stolen</li>
+                            <li>Systems can be damaged</li>
+                            <li>Financial losses can occur</li>
+                            <li>Privacy can be violated</li>
+                            <li>Services can become unavailable</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: AI Era -->
+            <section id="ai-era" class="tool-category">
+                <h2>Importance of Cybersecurity in AI Era</h2>
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Artificial Intelligence systems process large amounts of sensitive and important data. As AI becomes more common in healthcare, banking, automation, education, and defense, cybersecurity becomes even more important.
+                    </p>
+                    <div class="content-grid" style="margin: 0;">
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>📊 Data Protection</h4>
+                            <p>AI systems rely on large datasets. If attackers steal or manipulate data, AI systems may behave incorrectly.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>🤖 Model Manipulation</h4>
+                            <p>Attackers may try to manipulate AI models using malicious inputs.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>👤 Privacy Risks</h4>
+                            <p>AI systems often handle personal and sensitive user information.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>⚙️ Automation Risks</h4>
+                            <p>Compromised AI systems can automate attacks or make incorrect decisions.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Hacking vs Ethical Hacking -->
+            <section id="hacking-ethics" class="tool-category">
+                <h2>Hacking vs Ethical Hacking</h2>
+                <div class="content-grid">
+                    <div class="glass-card content-card">
+                        <h3>🚫 Hacking (Malicious)</h3>
+                        <p>Hacking refers to gaining access to systems, networks, or devices. Malicious hacking is <strong style="color: #ff6b6b;">illegal</strong> and performed to:</p>
+                        <ul>
+                            <li>Steal data</li>
+                            <li>Damage systems</li>
+                            <li>Disrupt services</li>
+                            <li>Gain unauthorized access</li>
+                        </ul>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>✅ Ethical Hacking</h3>
+                        <p>Ethical hacking is <strong style="color: #4ecdc4;">legal</strong> security testing performed with permission. Ethical hackers identify vulnerabilities before attackers exploit them.</p>
+                        <h4>Why Ethical Hacking Matters:</h4>
+                        <ul>
+                            <li>Improves security</li>
+                            <li>Identifies vulnerabilities</li>
+                            <li>Helps organizations strengthen defenses</li>
+                            <li>Prevents future attacks</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Types of Hackers -->
+            <section id="hacker-types" class="tool-category">
+                <h2>Types of Hackers</h2>
+                <div class="table-container">
+                    <table class="data-table" id="hacker-profiles">
+                        <thead>
+                            <tr>
+                                <th>Hacker Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong style="color: #4ecdc4;">White Hat</strong></td>
+                                <td>Ethical hackers who work legally to improve security. Main role includes penetration testing, vulnerability assessment, and security auditing.</td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: #ff6b6b;">Black Hat</strong></td>
+                                <td>Hackers who perform illegal activities for malicious purposes. Main activities include stealing data, spreading malware, financial fraud, and unauthorized access.</td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: #ffe66d;">Grey Hat</strong></td>
+                                <td>Hackers who may violate rules but do not always act maliciously. They sometimes discover vulnerabilities without permission and later report them.</td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: #a78bfa;">Script Kiddies</strong></td>
+                                <td>Beginners who use existing tools/scripts without deep technical understanding.</td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: #f0932b;">Hacktivists</strong></td>
+                                <td>Hackers motivated by political or social causes.</td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: #e74c3c;">State-Sponsored</strong></td>
+                                <td>Hackers supported by governments for espionage or cyber warfare.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 5: Phases of Hacking -->
+            <section id="phases-of-hacking" class="tool-category">
+                <h2>Phases of Hacking</h2>
+                <div class="content-grid">
+                    <div class="glass-card content-card">
+                        <h3>1. Reconnaissance</h3>
+                        <p>Gathering information about the target.</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>2. Scanning</h3>
+                        <p>Identifying open ports, systems, and services.</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>3. Gaining Access</h3>
+                        <p>Accessing the target system.</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>4. Maintaining Access</h3>
+                        <p>Keeping continued access to the compromised system.</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>5. Covering Tracks</h3>
+                        <p>Removing evidence and hiding activities.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 6: Cyber Kill Chain -->
+            <section id="kill-chain" class="tool-category">
+                <h2>Cyber Kill Chain</h2>
+                <div class="glass-card" style="padding: 2rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        The Cyber Kill Chain is a cybersecurity framework developed by <strong>Lockheed Martin</strong>. It explains the stages of a cyberattack.
+                    </p>
+                    <div class="content-grid" style="margin: 0;">
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>1. Reconnaissance</h4>
+                            <p>Attacker researches and identifies the target.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>2. Weaponization</h4>
+                            <p>Creating a malicious payload tailored to exploit vulnerabilities.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>3. Delivery</h4>
+                            <p>Transmitting the weapon to the target (email, USB, etc.).</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>4. Exploitation</h4>
+                            <p>The malicious code is triggered to exploit the vulnerability.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>5. Installation</h4>
+                            <p>Installing malware or backdoor on the target system.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>6. Command & Control</h4>
+                            <p>Establishing a channel for remote control of the compromised system.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>7. Actions on Objectives</h4>
+                            <p>Attacker achieves their goal (data theft, destruction, etc.).</p>
+                        </div>
+                    </div>
+                    <h4 style="margin-top: 2rem; color: var(--cyan);">Defense Mechanisms:</h4>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">Firewalls, Antivirus, IDS/IPS, Monitoring, Email filtering, Backups</p>
+                </div>
+            </section>
+
+            <!-- Section 7: Malware -->
+            <section id="malware" class="tool-category">
+                <h2>Malware</h2>
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        <strong>Malware</strong> stands for malicious software. It is software designed to damage systems, steal information, disrupt operations, or gain unauthorized access.
+                    </p>
+                    <div class="content-grid" style="margin: 0;">
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>🦠 Virus</h4>
+                            <p>Malicious code that attaches itself to files or programs.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>🐛 Worm</h4>
+                            <p>Self-replicating malware that spreads automatically across networks.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>🐴 Trojan</h4>
+                            <p>Malware disguised as legitimate software.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>🔒 Ransomware</h4>
+                            <p>Malware that encrypts files and demands payment.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>👁️ Spyware</h4>
+                            <p>Malware that secretly monitors user activities.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>📢 Adware</h4>
+                            <p>Software that displays unwanted advertisements.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>🔧 Rootkit</h4>
+                            <p>Malware designed to hide malicious activities and maintain privileged access.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 8: Networking Fundamentals -->
+            <section id="networking-fundamentals" class="tool-category">
+                <h2>Networking Fundamentals</h2>
+                <div class="content-grid">
+                    <div class="glass-card content-card">
+                        <h3>🌐 What is a Network?</h3>
+                        <p>A network is a collection of connected devices that communicate and share resources.</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>🔗 What is Networking?</h3>
+                        <p>Networking is the process of connecting systems and devices for communication.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 9: Types of Networks -->
+            <section id="network-types" class="tool-category">
+                <h2>Types of Networks</h2>
+                <div class="content-grid">
+                    <div class="glass-card content-card">
+                        <h3>LAN</h3>
+                        <p><strong>Local Area Network</strong> - Covers a small geographic area like a home, office, or building.</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>MAN</h3>
+                        <p><strong>Metropolitan Area Network</strong> - Covers a city or campus area.</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>WAN</h3>
+                        <p><strong>Wide Area Network</strong> - Spans large geographic areas, connecting multiple LANs/MANs.</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>PAN</h3>
+                        <p><strong>Personal Area Network</strong> - Network for personal devices within a short range.</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>CAN</h3>
+                        <p><strong>Campus Area Network</strong> - Network within a university or corporate campus.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 10: Network Topologies -->
+            <section id="network-topologies" class="tool-category">
+                <h2>Network Topologies</h2>
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                    <img src="network-topology.png" alt="Network Topologies Diagram" class="content-image" style="max-width: 100%; height: auto; margin-bottom: 1.5rem; border-radius: 8px;">
+                    <div class="content-grid" style="margin: 0;">
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>📡 Bus Topology</h4>
+                            <p>All nodes link sequentially to a single coaxial cable terminated at both ends. Single point of failure if the backbone fractures.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>⭐ Star Topology</h4>
+                            <p>Every device connects directly to a central Layer 2 Switch via RJ-45 unshielded twisted pair (UTP) cables. If one cable fails, only that node goes offline.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>🔄 Ring Topology</h4>
+                            <p>Devices form a circular communication path. Data travels in one direction.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>🕸️ Mesh Topology</h4>
+                            <p>High redundancy configuration where every host connects to every other host (n(n-1)/2 physical links). Used for mission-critical core distribution layers.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>🌳 Tree Topology</h4>
+                            <p>Hierarchical network structure combining star and bus topologies.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>🔀 Hybrid Topology</h4>
+                            <p>Combination of multiple topologies for flexibility and scalability.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 11: Networking Devices -->
+            <section id="networking-devices" class="tool-category">
+                <h2>Networking Devices</h2>
+                <div class="def-list">
+                    <div class="def-item">
+                        <div class="def-term">Hub</div>
+                        <div class="def-description">Broadcasts data to all connected devices. Operates at Layer 1 (Physical).</div>
+                    </div>
+                    <div class="def-item">
+                        <div class="def-term">Switch</div>
+                        <div class="def-description">Sends data only to intended devices using MAC addresses. Operates at Layer 2 (Data Link).</div>
+                    </div>
+                    <div class="def-item">
+                        <div class="def-term">Router</div>
+                        <div class="def-description">Connects different networks and routes data using IP addresses. Operates at Layer 3 (Network).</div>
+                    </div>
+                    <div class="def-item">
+                        <div class="def-term">Firewall</div>
+                        <div class="def-description">Filters incoming and outgoing traffic based on security rules.</div>
+                    </div>
+                    <div class="def-item">
+                        <div class="def-term">NIC</div>
+                        <div class="def-description">Network Interface Card - Hardware that connects a device to a network.</div>
+                    </div>
+                    <div class="def-item">
+                        <div class="def-term">Load Balancer</div>
+                        <div class="def-description">Distributes traffic across multiple systems to optimize resource use.</div>
+                    </div>
+                    <div class="def-item">
+                        <div class="def-term">Wireless Router</div>
+                        <div class="def-description">Provides wireless connectivity using Wi-Fi standards.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 12: IP Addressing -->
+            <section id="ip-addressing" class="tool-category">
+                <h2>IP Addressing</h2>
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        An <strong>IP address</strong> is a unique identifier assigned to devices on a network.
+                    </p>
+                    <div class="content-grid" style="margin: 0;">
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>IPv4</h4>
+                            <p>32-bit addressing system. Example: <code style="color: var(--cyan);">192.168.1.1</code></p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>IPv6</h4>
+                            <p>128-bit addressing system. Example: <code style="color: var(--cyan);">2001:db8::1</code></p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>Public IP</h4>
+                            <p>Accessible through the internet. Assigned by ISP.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>Private IP</h4>
+                            <p>Used inside local/internal networks. Common ranges: 192.168.x.x, 10.x.x.x, 172.16.x.x – 172.31.x.x</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>Static IP</h4>
+                            <p>Manually assigned fixed IP address that doesn't change.</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>Dynamic IP</h4>
+                            <p>Automatically assigned IP address (usually via DHCP).</p>
+                        </div>
+                        <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                            <h4>Loopback Address</h4>
+                            <p>Used for testing the local machine. Range: <code style="color: var(--cyan);">127.0.0.0 – 127.255.255.255</code></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 13: IP Classes -->
+            <section id="ip-classes" class="tool-category">
+                <h2>IP Classes</h2>
+                <div class="content-grid">
+                    <div class="glass-card content-card">
+                        <h3>Class A</h3>
+                        <p>For large networks. Range: 1.0.0.0 to 126.255.255.255</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>Class B</h3>
+                        <p>For medium networks. Range: 128.0.0.0 to 191.255.255.255</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>Class C</h3>
+                        <p>For small networks. Range: 192.0.0.0 to 223.255.255.255</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>Class D</h3>
+                        <p>For multicasting. Range: 224.0.0.0 to 239.255.255.255</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>Class E</h3>
+                        <p>For experimental purposes. Range: 240.0.0.0 to 255.255.255.255</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 14: Ports & Protocols -->
+            <section id="ports-protocols" class="tool-category">
+                <h2>Ports & Protocols</h2>
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        <strong>Logical ports</strong> are communication endpoints used by services and applications. Ports help systems identify which service should receive network traffic.
+                        <br><br>
+                        Total logical ports: <strong style="color: var(--cyan);">65,535</strong>
+                    </p>
+                    
+                    <h4 style="color: var(--text-primary); margin-bottom: 1rem;">Port Ranges</h4>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Port Range</th>
+                                    <th>Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0 – 1023</td>
+                                    <td>Well-known Ports</td>
+                                </tr>
+                                <tr>
+                                    <td>1024 – 49151</td>
+                                    <td>Registered Ports</td>
+                                </tr>
+                                <tr>
+                                    <td>49152 – 65535</td>
+                                    <td>Dynamic/Private Ports</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Integration Callout -->
+                    <div class="integration-callout">
+                        <div class="integration-callout-icon">📋</div>
+                        <div class="integration-callout-content">
+                            <h4>View Complete Port Reference</h4>
+                            <p>Check out the full port mapping directory with all important ports and their services.</p>
+                            <a href="tools.html#ports-table">Go to Tool Hub →</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 15: NAT & DMZ -->
+            <section id="nat-dmz" class="tool-category">
+                <h2>NAT & DMZ</h2>
+                <div class="content-grid">
+                    <div class="glass-card content-card">
+                        <h3>🔄 NAT (Network Address Translation)</h3>
+                        <p>NAT converts private IP addresses into public IP addresses.</p>
+                        <h4>Why It Matters:</h4>
+                        <ul>
+                            <li>Conserves IP addresses</li>
+                            <li>Hides internal systems</li>
+                            <li>Enables internet access</li>
+                        </ul>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>🛡️ DMZ (Demilitarized Zone)</h3>
+                        <p>A DMZ is a buffer network between the internet and internal network.</p>
+                        <h4>Why It Matters:</h4>
+                        <ul>
+                            <li>Provides additional security for public-facing services</li>
+                            <li>Isolates external-facing services from internal network</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 16: Servers -->
+            <section id="servers" class="tool-category">
+                <h2>Types of Servers</h2>
+                <div class="def-list">
+                    <div class="def-item">
+                        <div class="def-term">Web Server</div>
+                        <div class="def-description">Hosts websites and serves web content (e.g., Apache, Nginx).</div>
+                    </div>
+                    <div class="def-item">
+                        <div class="def-term">DNS Server</div>
+                        <div class="def-description">Converts domain names into IP addresses.</div>
+                    </div>
+                    <div class="def-item">
+                        <div class="def-term">DHCP Server</div>
+                        <div class="def-description">Automatically assigns IP addresses to devices on a network.</div>
+                    </div>
+                    <div class="def-item">
+                        <div class="def-term">FTP Server</div>
+                        <div class="def-description">Provides file transfer services.</div>
+                    </div>
+                    <div class="def-item">
+                        <div class="def-term">Email Server</div>
+                        <div class="def-description">Handles email communication (SMTP, POP3, IMAP).</div>
+                    </div>
+                    <div class="def-item">
+                        <div class="def-term">Database Server</div>
+                        <div class="def-description">Stores and manages databases (e.g., MySQL, PostgreSQL).</div>
+                    </div>
+                    <div class="def-item">
+                        <div class="def-term">Proxy Server</div>
+                        <div class="def-description">Acts as intermediary between client and internet.</div>
+                    </div>
+                    <div class="def-item">
+                        <div class="def-term">File Server</div>
+                        <div class="def-description">Stores and shares files across a network.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 17: Hosting Types -->
+            <section id="hosting-types" class="tool-category">
+                <h2>Hosting Types</h2>
+                <div class="content-grid">
+                    <div class="glass-card content-card">
+                        <h3>🏢 Shared Hosting</h3>
+                        <p>Multiple users share the same server resources. Cost-effective but with limited control and resources.</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>🏰 Dedicated Hosting</h3>
+                        <p>Single user receives full server resources. Complete control, better performance, but more expensive.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 18: Reconnaissance -->
+            <section id="reconnaissance" class="tool-category">
+                <h2>Reconnaissance</h2>
+                <div class="content-grid">
+                    <div class="glass-card content-card">
+                        <h3>🔍 Active Reconnaissance</h3>
+                        <p>Direct interaction with the target system. Examples include port scanning, network scanning, and vulnerability scanning. This method is faster but can be detected.</p>
+                    </div>
+                    <div class="glass-card content-card">
+                        <h3>👀 Passive Reconnaissance</h3>
+                        <p>Indirect information gathering without directly interacting with the target. Examples include OSINT, social media analysis, and public record searches. This method is stealthier but slower.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation to next month -->
+            <div class="integration-callout" style="margin-top: 3rem;">
+                <div class="integration-callout-icon">➡️</div>
+                <div class="integration-callout-content">
+                    <h4>Ready for Month 2?</h4>
+                    <p>Next month covers Virtual Labs, Linux & Scanning - where you'll set up your own cybersecurity lab environment.</p>
+                    <a href="month2.html">Continue to Month 2 →</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">🔒 CyberCourse</div>
+            <p>A comprehensive cybersecurity crash course for beginners.</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="month1.html">Month 1</a>
+                <a href="month2.html">Month 2</a>
+                <a href="month3.html">Month 3</a>
+                <a href="tools.html">Tool Hub</a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">© 2024 Cybersecurity Crash Course. Built for educational purposes.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        function toggleNav() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Close nav when clicking outside
+        document.addEventListener('click', function(e) {
+            const navMenu = document.getElementById('navMenu');
+            const navToggle = document.querySelector('.nav-toggle');
+            if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+As an AI serving as your Senior UI/UX Architect, I have formalized the portal structure into a clean, professional document format. This blueprint outlines the exact content mapping and cross-linking strategy for your website based directly on the provided Master Content Document.
+
+---
+
+## **Cybersecurity Crash Course: UI/UX Portal Blueprint**
+
+> **Document Purpose:** This architectural blueprint defines the multi-page structure, content distribution, and user flow for transforming the raw cybersecurity notes into an interactive learning portal.
+
+### **Global UI/UX Architecture**
+
+* **Persistent Navigation:** A fixed top header or a sticky left-hand sidebar will remain visible across all pages.
+* **Menu Items:** The persistent menu will include links to: Home, Foundations (Month 1), Labs & Scanning (Month 2), Enumeration & Passwords (Month 3), and the Tool Hub.
+* **Cross-linking Strategy:** Whenever a specific command, tool, or port is introduced in a theory module, it will feature an inline hyperlink and a contextual "Associated Tools" sidebar widget.
+* **Routing Mechanism:** These widgets and links will route the user directly to the specific anchor tag on the `tools.html` page, ensuring theory connects seamlessly to practical reference material.
+
+---
+
+### **index.html (Landing Page)**
+
+* 
+**Hero Section:** A welcoming title introducing the structured cybersecurity internship notes.
+
+
+* 
+**Course Purpose:** A brief explanation stating this is beginner-friendly crash course material designed for revision, understanding, and practical learning.
+
+
+* 
+**The Core Focus:** A visual breakdown of the CIA Triad covering Confidentiality, Integrity, and Availability.
+
+
+* 
+**Roadmap Step 1:** A visual block explaining that Month 1 focuses on Cybersecurity Foundations & Networking.
+
+
+* 
+**Roadmap Step 2:** A visual block explaining that Month 2 focuses on Virtual Labs, Linux & Scanning.
+
+
+* 
+**Roadmap Step 3:** A visual block explaining that Month 3 focuses on Enumeration, Passwords & Practical Labs.
+
+
+* **Call to Action:** A prominent "Start Learning: Month 1" button that routes the user to `month1.html`.
+
+---
+
+### **month1.html (Foundations & Networking)**
+
+* 
+**Cybersecurity & AI:** An explanation of the practice of protecting systems from cyberattacks.
+
+
+* 
+**AI Risks & Importance:** A section detailing the importance of cybersecurity in the AI era to protect large datasets, prevent model manipulation, and secure fields like healthcare, banking, and defense.
+
+
+* 
+**Hacker Classifications:** A breakdown of illegal malicious Hacking versus legal Ethical Hacking.
+
+
+* 
+**Attack Methodologies:** An outline of the 5 Phases of Hacking from Reconnaissance to Covering Tracks.
+
+
+* 
+**Cyber Kill Chain:** An explanation of the Lockheed Martin framework detailing the stages of a cyberattack.
+
+
+* 
+**Malware Overview:** Definitions of various malware types including Virus, Worm, Trojan, Ransomware, Spyware, Adware, and Rootkit.
+
+
+* 
+**Networking Fundamentals:** An explanation of network types including LAN, MAN, WAN, PAN, and CAN.
+
+
+* 
+**Topologies:** An overview of network layouts such as Bus, Star, Ring, Mesh, Tree, and Hybrid.
+
+
+* 
+**IP Addressing:** An explanation of IPv4, IPv6, Public, Private, Static, Dynamic, and Loopback addresses.
+
+
+* 
+**Architecture Design:** A breakdown of Network Address Translation (NAT) and the Demilitarized Zone (DMZ).
+
+
+* **Integration Cue:** A floating "View Port Cheat Sheet" button linking directly to the ports table in `tools.html`.
+
+**Table: Hacker Profiles Directory**
+
+| Hacker Type | Description |
+| --- | --- |
+| **White Hat** | Ethical hackers who work legally to improve security.
+
+ |
+| **Black Hat** | Hackers who perform illegal activities for malicious purposes.
+
+ |
+| **Grey Hat** | Hackers who may violate rules but do not always act maliciously.
+
+ |
+| **Script Kiddies** | Beginners who use existing tools/scripts without deep technical understanding.
+
+ |
+| **Hacktivists** | Hackers motivated by political or social causes.
+
+ |
+| **State-Sponsored** | Hackers supported by governments for espionage or cyber warfare.
+
+ |
+
+---
+
+### **month2.html (Labs & Scanning)**
+
+* 
+**Virtual Lab Setup:** A step-by-step installation flow for VirtualBox virtualization software.
+
+
+* 
+**Penetration OS:** An installation guide for Kali Linux as the penetration testing distribution.
+
+
+* 
+**Target VM:** Setup steps for Metasploitable as an intentionally vulnerable virtual machine.
+
+
+* 
+**Networking Modes:** An explanation of NAT, NAT Network, Bridged Adapter, and Internal Network modes.
+
+
+* 
+**Kali Linux Basics:** An introduction to the Root user administrator account and Terminal command-line usage.
+
+
+* 
+**Host Discovery:** An introduction to discovery tools including Netdiscover, Angry IP Scanner, and Advanced IP Scanner.
+
+
+* 
+**Nmap Integration:** An explanation of Nmap for port scanning, host discovery, and service detection.
+
+
+* 
+**Zenmap:** An introduction to Zenmap as the graphical user interface version of Nmap with topology visualization.
+
+
+* **Integration Cue:** "Nmap Command Reference" and "Kali Linux Command Reference" sidebar cards linking directly to their respective tables in `tools.html`.
+
+---
+
+### **month3.html (Enumeration & Labs)**
+
+* 
+**Enumeration Deep Dive:** The definition of enumeration as the process of extracting detailed information from services.
+
+
+* 
+**Protocols Overview:** Specific enumeration details on FTP, Telnet, SSH, SNMP, and Databases.
+
+
+* 
+**Netcat Usage:** An explanation of Netcat for banner grabbing, manual interaction, and shell interaction.
+
+
+* 
+**Password Security:** The basics of recovering passwords from hashes and exploiting weak passwords.
+
+
+* 
+**Hash Types:** A structural comparison differentiating older LM hashes from newer NTLM Windows hash formats.
+
+
+* 
+**Cracking Tools:** An introduction to Ophcrack as a Windows password cracking tool for LM/NTLM recovery.
+
+
+* 
+**Rainbow Tables:** An explanation of Rainbow Tables as precomputed hashes used to speed up password cracking.
+
+
+* 
+**Course Conclusion:** A summary checklist of practical skills learned, including VM networking, service interaction, database interaction, and vulnerability identification.
+
+
+* **Integration Cue:** A contextual "View Netcat Cheatsheet" call-out linking to `tools.html`.
+
+---
+
+### **tools.html (Tool Hub)**
+
+* 
+**Logical Ports Reference:** A foundational explanation defining logical ports as communication endpoints used by services and applications.
+
+
+* 
+**Port Map Directory:** A searchable directory containing mapped services and purposes across 65,535 total logical ports.
+
+
+* 
+**Linux Command Cheat Sheet:** A quick-reference table for navigation and network commands (e.g., `pwd`, `ip a`, `sudo su`).
+
+
+* 
+**Nmap Command Reference:** A list of critical scanning flags for rapid lookups (e.g., `-p-`, `-sS`, `-sV`).
+
+
+* **Software Glossary:** An alphabetized glossary of all tools mentioned across the modules ensuring definitions for items like Netcat, Zenmap, and VirtualBox are always one click away.
+
+**Table: Standard Port Ranges**
+
+| Port Range | Type |
+| --- | --- |
+| **0-1023** | Well-known Ports 
+
+ |
+| **1024-49151** | Registered Ports 
+
+ |
+| **49152-65535** | Dynamic/Private Ports 
+
+ |

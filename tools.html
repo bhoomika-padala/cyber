@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cybersecurity Tool Hub - Complete reference for ports, Linux commands, Nmap commands, and software glossary.">
+    <title>Tool Hub | Cybersecurity Crash Course</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Persistent Navigation -->
+    <nav class="nav-container">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">🔒</div>
+                <span class="nav-logo-text">CyberCourse</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-menu-item"><a href="index.html">Home</a></li>
+                <li class="nav-menu-item"><a href="month1.html">Foundations</a></li>
+                <li class="nav-menu-item"><a href="month2.html">Labs & Scanning</a></li>
+                <li class="nav-menu-item"><a href="month3.html">Enumeration</a></li>
+                <li class="nav-menu-item"><a href="tools.html" class="active">Tool Hub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span class="current">Tool Hub</span>
+            </div>
+            <h1>Tool Hub</h1>
+            <p>Your comprehensive reference for ports, commands, and cybersecurity tools.</p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search ports, commands, tools..." onkeyup="searchContent()">
+        </div>
+
+        <div class="container">
+            <!-- Logical Ports Reference -->
+            <section id="ports-section" class="tool-category">
+                <h2>Logical Ports Reference</h2>
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        <strong>Logical ports</strong> are communication endpoints used by services and applications. Ports help systems identify which service should receive network traffic.
+                        <br><br>
+                        Total logical ports: <strong style="color: var(--cyan);">65,535</strong>
+                    </p>
+                </div>
+
+                <!-- Standard Port Ranges -->
+                <div id="ports-table" class="table-container">
+                    <h3 style="color: var(--cyan); margin-bottom: 1rem;">Standard Port Ranges</h3>
+                    <table class="data-table" data-searchable="true">
+                        <thead>
+                            <tr>
+                                <th>Port Range</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0 – 1023</td>
+                                <td>Well-known Ports</td>
+                            </tr>
+                            <tr>
+                                <td>1024 – 49151</td>
+                                <td>Registered Ports</td>
+                            </tr>
+                            <tr>
+                                <td>49152 – 65535</td>
+                                <td>Dynamic/Private Ports</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Important Ports Table -->
+                <div class="table-container" style="margin-top: 2rem;">
+                    <h3 style="color: var(--cyan); margin-bottom: 1rem;">Important Ports & Services</h3>
+                    <table class="data-table" id="ports-directory" data-searchable="true">
+                        <thead>
+                            <tr>
+                                <th>Port</th>
+                                <th>Protocol/Service</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>20</strong></td>
+                                <td>FTP Data</td>
+                                <td>File transfer data</td>
+                            </tr>
+                            <tr>
+                                <td><strong>21</strong></td>
+                                <td>FTP</td>
+                                <td>File transfer control</td>
+                            </tr>
+                            <tr>
+                                <td><strong>22</strong></td>
+                                <td>SSH</td>
+                                <td>Secure remote login</td>
+                            </tr>
+                            <tr>
+                                <td><strong>23</strong></td>
+                                <td>Telnet</td>
+                                <td>Insecure remote login</td>
+                            </tr>
+                            <tr>
+                                <td><strong>25</strong></td>
+                                <td>SMTP</td>
+                                <td>Email sending</td>
+                            </tr>
+                            <tr>
+                                <td><strong>53</strong></td>
+                                <td>DNS</td>
+                                <td>Domain resolution</td>
+                            </tr>
+                            <tr>
+                                <td><strong>80</strong></td>
+                                <td>HTTP</td>
+                                <td>Web communication</td>
+                            </tr>
+                            <tr>
+                                <td><strong>110</strong></td>
+                                <td>POP3</td>
+                                <td>Email retrieval</td>
+                            </tr>
+                            <tr>
+                                <td><strong>139</strong></td>
+                                <td>NetBIOS</td>
+                                <td>Windows networking</td>
+                            </tr>
+                            <tr>
+                                <td><strong>143</strong></td>
+                                <td>IMAP</td>
+                                <td>Email retrieval</td>
+                            </tr>
+                            <tr>
+                                <td><strong>161</strong></td>
+                                <td>SNMP</td>
+                                <td>Network management</td>
+                            </tr>
+                            <tr>
+                                <td><strong>162</strong></td>
+                                <td>SNMP Trap</td>
+                                <td>SNMP notifications</td>
+                            </tr>
+                            <tr>
+                                <td><strong>443</strong></td>
+                                <td>HTTPS</td>
+                                <td>Secure web communication</td>
+                            </tr>
+                            <tr>
+                                <td><strong>445</strong></td>
+                                <td>SMB</td>
+                                <td>Windows file sharing</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3306</strong></td>
+                                <td>MySQL</td>
+                                <td>Database service</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3389</strong></td>
+                                <td>RDP</td>
+                                <td>Remote desktop</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5432</strong></td>
+                                <td>PostgreSQL</td>
+                                <td>Database service</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5900</strong></td>
+                                <td>VNC</td>
+                                <td>Remote desktop control</td>
+                            </tr>
+                            <tr>
+                                <td><strong>8080</strong></td>
+                                <td>HTTP Alt</td>
+                                <td>Alternative web service</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Linux Command Cheat Sheet -->
+            <section id="linux-commands" class="tool-category">
+                <h2>Linux Command Cheat Sheet</h2>
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Quick reference for essential Linux navigation and network commands used in cybersecurity.
+                    </p>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table" data-searchable="true">
+                        <thead>
+                            <tr>
+                                <th>Command</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code class="command">pwd</code></td>
+                                <td>Show current directory</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">whoami</code></td>
+                                <td>Show current user</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">ip a</code></td>
+                                <td>Display IP addresses</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">ifconfig</code></td>
+                                <td>Display network interfaces</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">ping</code></td>
+                                <td>Test connectivity</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">sudo su</code></td>
+                                <td>Switch to root user</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">clear</code></td>
+                                <td>Clear terminal screen</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">nano</code></td>
+                                <td>Open text editor</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">ls</code></td>
+                                <td>List files/folders</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">cd</code></td>
+                                <td>Change directory</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Nmap Command Reference -->
+            <section id="nmap-commands" class="tool-category">
+                <h2>Nmap Command Reference</h2>
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Critical scanning flags for rapid lookups. Nmap is the most popular network scanning tool in cybersecurity.
+                    </p>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table" data-searchable="true">
+                        <thead>
+                            <tr>
+                                <th>Command</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code class="command">nmap <target></code></td>
+                                <td>Basic scan of target</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">nmap -F <target></code></td>
+                                <td>Fast scan (top 100 ports)</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">nmap -p- <target></code></td>
+                                <td>Scan all 65535 ports</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">nmap -sS <target></code></td>
+                                <td>Stealth SYN scan</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">nmap -sU <target></code></td>
+                                <td>UDP scan</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">nmap -O <target></code></td>
+                                <td>OS detection</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">nmap -sV <target></code></td>
+                                <td>Service version detection</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">nmap -A <target></code></td>
+                                <td>Aggressive scan (OS, version, script, traceroute)</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">nmap -sC <target></code></td>
+                                <td>Default script scan</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Netcat Cheatsheet -->
+            <section id="netcat-cheatsheet" class="tool-category">
+                <h2>Netcat Cheatsheet</h2>
+                <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Netcat is the "Swiss Army knife of networking" - a powerful tool for reading from and writing to network connections.
+                    </p>
+                    <h4 style="color: var(--cyan); margin-bottom: 1rem;">Common Uses:</h4>
+                    <ul style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        <li>Banner grabbing</li>
+                        <li>Manual interaction with services</li>
+                        <li>Shell interaction (reverse/bind shells)</li>
+                    </ul>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table" data-searchable="true">
+                        <thead>
+                            <tr>
+                                <th>Command</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code class="command">nc <host> <port></code></td>
+                                <td>Connect to a host on specified port</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">nc -l <port></code></td>
+                                <td>Listen on specified port</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">nc -lvnp <port></code></td>
+                                <td>Listen with verbose output, numeric IPs, and no DNS resolution</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">nc -zv <host> <port></code></td>
+                                <td>Zero-I/O mode (scanning)</td>
+                            </tr>
+                            <tr>
+                                <td><code class="command">nc -w <seconds></code></td>
+                                <td>Set timeout for connections</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Software Glossary -->
+            <section id="software-glossary" class="tool-category">
+                <h2>Software Glossary</h2>
+                <div class="glass-card" style="padding: 2rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                        An alphabetized glossary of all tools mentioned across the course modules.
+                    </p>
+
+                    <div class="def-list">
+                        <div class="def-item">
+                            <div class="def-term">Advanced IP Scanner</div>
+                            <div class="def-description">Windows-based network scanner that provides quick network analysis and remote control capabilities.</div>
+                        </div>
+                        <div class="def-item">
+                            <div class="def-term">Angry IP Scanner</div>
+                            <div class="def-description">Fast, cross-platform network scanning tool that can scan IP addresses and ports.</div>
+                        </div>
+                        <div class="def-item">
+                            <div class="def-term">Kali Linux</div>
+                            <div class="def-description">A Debian-based Linux distribution designed for digital forensics and penetration testing. Comes pre-installed with hundreds of security tools.</div>
+                        </div>
+                        <div class="def-item">
+                            <div class="def-term">Metasploitable</div>
+                            <div class="def-description">An intentionally vulnerable virtual machine created for security training and testing purposes.</div>
+                        </div>
+                        <div class="def-item">
+                            <div class="def-term">Nmap</div>
+                            <div class="def-description">Network Mapper - A free and open-source utility for network discovery and security auditing. Used for host discovery, port scanning, service detection, and OS detection.</div>
+                        </div>
+                        <div class="def-item">
+                            <div class="def-term">Netcat</div>
+                            <div class="def-description">A versatile networking tool often called the "Swiss Army knife of networking." Used for reading from and writing to network connections using TCP or UDP.</div>
+                        </div>
+                        <div class="def-item">
+                            <div class="def-term">Netdiscover</div>
+                            <div class="def-description">An active/passive ARP reconnaissance tool used for discovering live hosts on a local network.</div>
+                        </div>
+                        <div class="def-item">
+                            <div class="def-term">Ophcrack</div>
+                            <div class="def-description">A Windows password cracking tool that uses rainbow tables for efficient LM/NTLM password recovery.</div>
+                        </div>
+                        <div class="def-item">
+                            <div class="def-term">VirtualBox</div>
+                            <div class="def-description">A free and open-source virtualization software used to create and run virtual machines on your computer.</div>
+                        </div>
+                        <div class="def-item">
+                            <div class="def-term">Zenmap</div>
+                            <div class="def-description">The official graphical user interface (GUI) for Nmap. Provides topology visualization, scan profiles, and interactive result display.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Navigation -->
+            <section class="tool-category">
+                <h2>Quick Navigation</h2>
+                <div class="content-grid">
+                    <a href="#ports-table" class="glass-card content-card" style="text-decoration: none; color: inherit;">
+                        <h3>📋 Port Directory</h3>
+                        <p>Complete mapping of ports, services, and their purposes.</p>
+                    </a>
+                    <a href="#linux-commands" class="glass-card content-card" style="text-decoration: none; color: inherit;">
+                        <h3>🐧 Linux Commands</h3>
+                        <p>Essential Linux commands for cybersecurity work.</p>
+                    </a>
+                    <a href="#nmap-commands" class="glass-card content-card" style="text-decoration: none; color: inherit;">
+                        <h3>🔍 Nmap Reference</h3>
+                        <p>All important Nmap scanning flags and options.</p>
+                    </a>
+                    <a href="#netcat-cheatsheet" class="glass-card content-card" style="text-decoration: none; color: inherit;">
+                        <h3>🐱 Netcat Guide</h3>
+                        <p>Netcat commands for banner grabbing and shell interaction.</p>
+                    </a>
+                    <a href="#software-glossary" class="glass-card content-card" style="text-decoration: none; color: inherit;">
+                        <h3>📚 Software Glossary</h3>
+                        <p>Definitions of all tools mentioned in the course.</p>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">🔒 CyberCourse</div>
+            <p>A comprehensive cybersecurity crash course for beginners.</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="month1.html">Month 1</a>
+                <a href="month2.html">Month 2</a>
+                <a href="month3.html">Month 3</a>
+                <a href="tools.html">Tool Hub</a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">© 2024 Cybersecurity Crash Course. Built for educational purposes.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        function toggleNav() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Close nav when clicking outside
+        document.addEventListener('click', function(e) {
+            const navMenu = document.getElementById('navMenu');
+            const navToggle = document.querySelector('.nav-toggle');
+            if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Search Functionality
+        function searchContent() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const tables = document.querySelectorAll('.data-table[data-searchable="true"]');
+
+            tables.forEach(table => {
+                const rows = table.querySelectorAll('tbody tr');
+                rows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    row.style.display = text.includes(filter) ? '' : 'none';
+                });
+            });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

